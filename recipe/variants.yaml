@@ -1,6 +1,10 @@
-# Local override: gives windows two toolchain lanes (vs2022/gcc).
+# Local override: gives windows two toolchain lanes on x86_64 (vs2022/gcc)
+# and a zig lane on arm64.
 c_compiler:
   - if: not unix and x86_64
     then:
       - vs2022
       - gcc
+  - if: not unix and arm64
+    then:
+      - zig
